@@ -3,7 +3,5 @@
 echo "****************************************************************"
 echo "Restarting MYSQL"
 echo "****************************************************************"
-systemctl restart mysql.service
-
-
-
+service mysql restart
+while ps -p "$(pgrep mysql)" > /dev/null ; do sleep 1; done;
