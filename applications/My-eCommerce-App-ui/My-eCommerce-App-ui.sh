@@ -31,7 +31,7 @@ server {
 	server_name _;
 	index index.html index.htm;
 	location /api {		
-		proxy_pass http://promotions-manager-api.$DOMAIN_NAME:$API_PORT/api;
+		proxy_pass http://My-eCommerce-App-api.$DOMAIN_NAME:$API_PORT/api;
 		proxy_http_version 1.1;
 		proxy_set_header Upgrade \$http_upgrade;
 		proxy_set_header Connection 'upgrade';
@@ -44,3 +44,4 @@ server {
 	}
 }
 EOF
+
