@@ -5,7 +5,7 @@ metadata:
     All in one deployment of our eCommerce app 
     
 clouds: 
-  - azure: westeurope
+  - azure 2: westeurope
   
 artifacts:
   - My-eCommerce-App-ui: artifacts/latest/promotions-manager-ui.master.tar.gz
