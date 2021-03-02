@@ -9,8 +9,8 @@ cd blueprints || exit 1;
 for f in *.yaml; do
   BP=${f%.yaml}
   echo "Validating ${BP}..."
-  colony --token $COLONY_TOKEN --space $SPACE bp validate ${BP} --branch $BRANCH
-  echo "\n**********************************************************************"
+  colony --token $COLONY_TOKEN --space $SPACE bp validate "${BP}" --branch $BRANCH
+  echo "**********************************************************************"
 #  printf '%s\n' "${f%.yaml}"
 done
 
