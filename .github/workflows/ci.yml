@@ -15,4 +15,4 @@ jobs:
       env:
         COLONY_TOKEN: ${{ secrets.COLONY_TOKEN }}
       with:
-        space: bla
+        space: PreSaleJenkinsSolution
