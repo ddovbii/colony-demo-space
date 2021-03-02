@@ -1,0 +1,11 @@
+name: 'Colony Validate'
+description: 'Validates colony blueprints against specific repo'
+author: 'Quali'
+inputs:
+  space:
+    description: 'Colony space'
+    required: true
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
