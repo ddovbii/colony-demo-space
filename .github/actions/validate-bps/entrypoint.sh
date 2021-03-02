@@ -6,12 +6,19 @@ echo "working in branch ${BRANCH}"
 echo "Space: ${SPACE}"
 cd blueprints || exit 1;
 
+err=0
 for f in *.yaml; do
   BP=${f%.yaml}
   echo "Validating ${BP}..."
-  colony --token $COLONY_TOKEN --space $SPACE bp validate "${BP}" --branch $BRANCH
+  colony --token $COLONY_TOKEN --space $SPACE bp validate "${BP}" --branch $BRANCH || ((err++))
   echo "**********************************************************************"
 #  printf '%s\n' "${f%.yaml}"
 done
+
+echo "Number of failed blueptints: ${err}"
+
+if (( $err > 0 )); then
+  exit 1;
+fi
 
 # colony --help
