@@ -1,4 +1,4 @@
-FROM python:3.8-stretch
+FROM python:3.8.8-buster
 
 LABEL name="Validate Colony Blueprints"
 LABEL version="0.0.1"
