@@ -11,7 +11,7 @@ jobs:
     - uses: actions/checkout@v1
     
     - name: Colony validate blueprints
-      uses: .github/actions/validate-bps
+      uses: ./.github/actions/validate-bps
       env:
         COLONY_TOKEN: ${{ secrets.COLONY_TOKEN }}
       with:
