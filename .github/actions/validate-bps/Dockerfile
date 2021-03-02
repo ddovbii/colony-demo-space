@@ -13,7 +13,7 @@ LABEL com.github.actions.color="gray-dark"
 
 #COPY entrypoint.sh cs18_client.py requirements.txt /
 RUN pip install colony-cli
-
+COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT [ "/entrypoint.sh" ]
 
 #RUN ["chmod", "+x", "/entrypoint.sh"]
