@@ -3,12 +3,13 @@
 SPACE=$1
 BRANCH=${GITHUB_REF##*/}
 echo "working in branch ${BRANCH}"
-
+echo "Space: ${SPACE}"
 cd blueprints || exit 1;
 
 for f in *.yaml; do
-  echo "Validating ${f}..."
-  colony --token $COLONY_TOKEN --space $SPACE bp validate ${f%.yaml} -b $BRANCH  
+  BP=${f%.yaml}
+  echo "Validating ${BP}..."
+  colony --token $COLONY_TOKEN --space $SPACE bp validate ${BP} --branch $BRANCH  
 #  printf '%s\n' "${f%.yaml}"
 done
 
