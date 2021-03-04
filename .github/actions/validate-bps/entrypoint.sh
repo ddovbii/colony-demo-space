@@ -5,9 +5,9 @@ BRANCH=${GITHUB_REF##*/}
 echo "working in branch ${BRANCH}"
 echo "Space: ${SPACE}"
 cd blueprints || exit 1;
-
+echo ${GITHUB_EVENT_NAME}
 echo "List of changed files:"
-echo "CHANGED_FILES=$(git diff --name-only ${{ github.event.before }}..${{ github.event.after }})"
+echo "CHANGED_FILES=$(git diff --name-only ${GITHUB_EVENT_BEFORE}..${GITHUB_EVENT_AFTER})"
 
 
 err=0
