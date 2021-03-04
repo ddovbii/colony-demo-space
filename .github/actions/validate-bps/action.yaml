@@ -9,5 +9,8 @@ inputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  env:
+    GITHUB_EVENT_BEFORE: ${{ github.event.before }}
+    GITHUB_EVENT_AFTER: ${{ github.event.before }}
   args:
     - ${{ inputs.space }}
