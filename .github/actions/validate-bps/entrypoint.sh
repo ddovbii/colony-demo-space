@@ -6,6 +6,10 @@ echo "working in branch ${BRANCH}"
 echo "Space: ${SPACE}"
 cd blueprints || exit 1;
 
+echo "List of changed files:"
+echo "$(git diff --name-only ${{ github.event.before }}..${{ github.event.after }})"
+
+
 err=0
 for f in *.yaml; do
   BP=${f%.yaml}
