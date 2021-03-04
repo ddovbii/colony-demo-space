@@ -7,8 +7,8 @@ echo "Space: ${SPACE}"
 cd blueprints || exit 1;
 echo ${GITHUB_EVENT_NAME}
 echo "List of changed files:"
-echo "CHANGED_FILES=$(git diff --name-only ${GITHUB_EVENT_BEFORE}..${GITHUB_EVENT_AFTER})"
-
+#echo "CHANGED_FILES=$(git diff --name-only ${GITHUB_EVENT_BEFORE}..${GITHUB_EVENT_AFTER})"
+env
 
 err=0
 for f in *.yaml; do
