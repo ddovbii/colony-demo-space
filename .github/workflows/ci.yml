@@ -6,6 +6,9 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        space: [ PreSaleJenkinsSolution, promotions-manager ]
 
     steps:
     - uses: actions/checkout@v1
@@ -15,4 +18,4 @@ jobs:
       env:
         COLONY_TOKEN: ${{ secrets.COLONY_TOKEN }}
       with:
-        space: PreSaleJenkinsSolution
+        space: ${{ matrix.space }}
