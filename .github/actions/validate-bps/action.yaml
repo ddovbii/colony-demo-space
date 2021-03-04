@@ -5,12 +5,18 @@ inputs:
   space:
     description: 'Colony space'
     required: true
+  token:
+    description: >
+      GitHub token for GitHub API requests.
+      Users shouldn't need to set this themselves.
+    required: true
+    default: ${{ github.token }}
 
 runs:
   using: 'docker'
   image: 'Dockerfile'
- env:
-   GITHUB_EVENT_BEFORE: "${{ github.event.before }}"
-   GITHUB_EVENT_AFTER: "${{ github.event.before }}"
+  env:
+    GITHUB_EVENT_BEFORE: ${{ github.event.before }}
+    GITHUB_EVENT_AFTER: ${{ github.event.before }}
   args:
     - ${{ inputs.space }}
