@@ -7,7 +7,7 @@ echo "Space: ${SPACE}"
 cd blueprints || exit 1;
 
 echo "List of changed files:"
-echo "$(git diff --name-only ${{ github.event.before }}..${{ github.event.after }})"
+echo "CHANGED_FILES=$(git diff --name-only ${{ github.event.before }}..${{ github.event.after }})"
 
 
 err=0
