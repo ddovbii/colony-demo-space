@@ -4,6 +4,9 @@ const core = require('@actions/core');
 // const { GitHub } = require('@actions/github');
 const github = require("@actions/github");
 let { context } = require('@actions/github');
+const fs = require('fs');
+const path = require('path');
+const fetch = require("node-fetch");
 
 async function run() {
     try {
@@ -64,10 +67,25 @@ async function run() {
                 "Please submit an issue on this action's GitHub repo."
             )
         }
+
+        let branch;
+        if ('pull_request' in github.context.payload) {
+            branch = 'pull/' + github.context.payload.number + '/head';
+        }
+        else if ('ref' in github.context.payload) {
+            const arr = github.context.payload.ref.split("/");
+            branch = arr[arr.length - 1];        
+        }
+        else {
+            core.setFailed('Unable to fetch branch due to unsupported event');
+        }
+
         // Get the changed files from the response payload.
         const files = response.data.files
         for (const file of files) {
             const filename = file.filename
+
+            core.info(`Found change in file ${filename}`)
 
             if (file.status === "removed") {
                 continue
