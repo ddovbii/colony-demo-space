@@ -5,18 +5,15 @@ inputs:
   space:
     description: 'Colony space'
     required: true
-  before:
+  token:
     description: >
-      commit hash before
+      colony_token
     required: true
-    default: ${{ github.event.before }}
+  debug:
+    description: 'Enable debug logging'
+    required: false
+    default: 'false'
 
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  env:
-#     GITHUB_EVENT_BEFORE: ${{ github.event.before }}
-    GITHUB_EVENT_AFTER: ${{ github.token }}
-  args:
-    - ${{ inputs.space }}
-    - ${{ inputs.before }}
+  using: 'node12'
+  main: 'index.js'
