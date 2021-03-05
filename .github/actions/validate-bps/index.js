@@ -56,7 +56,7 @@ try {
         repo: context.repo.repo
     })
 
-    coro.info(response)
+    core.info(response)
     // Ensure that the request was successful.
     if (response.status !== 200) {
         core.setFailed(
