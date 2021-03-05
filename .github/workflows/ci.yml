@@ -15,7 +15,8 @@ jobs:
     
     - name: Colony validate blueprints
       uses: ./.github/actions/validate-bps
-      env:
-        COLONY_TOKEN: ${{ secrets.COLONY_TOKEN }}
+#       env:
+#         COLONY_TOKEN: ${{ secrets.COLONY_TOKEN }}
       with:
+        token: ${{ secrets.COLONY_TOKEN }}
         space: ${{ matrix.space }}
