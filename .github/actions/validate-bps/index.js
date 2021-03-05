@@ -86,10 +86,8 @@ async function run() {
             if (file.status === "removed") {
                 continue
             }
-
-            core.info(`Found change in file ${filename}`)
-
             const filename = file.filename
+            core.info(`Found change in file ${filename}`)
 
             if (filename.startsWith('blueprints/')) {
                 var bp_name = filename.replace('blueprints/', '').replace('.yaml', '')
