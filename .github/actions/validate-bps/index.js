@@ -1,13 +1,15 @@
-const core = require('@actions/core');
-const github = require('@actions/github');
-import {context, GitHub} from '@actions/github'
 //import {context, GitHub} from '@actions/github'
+
+const core = require('@actions/core');
+const { GitHub } = require('@actions/github');
+let { context } = require('@actions/github');
 
 try {
     // const logger = new Logger(core.getInput('debug'))
     const token = core.getInput('token');
+    const gh_token = core.getInput('github_token')
     const space = core.getInput('space');
-    const client = new GitHub(token)
+    const client = new GitHub(gh_token)
     
     const eventName = context.eventName
 

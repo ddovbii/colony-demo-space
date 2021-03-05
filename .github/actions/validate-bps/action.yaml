@@ -9,6 +9,12 @@ inputs:
     description: >
       colony_token
     required: true
+  github_token:
+    description: >
+      GitHub token for GitHub API requests.
+      Users shouldn't need to set this themselves.
+    required: true
+    default: ${{ github.token }}
   debug:
     description: 'Enable debug logging'
     required: false
