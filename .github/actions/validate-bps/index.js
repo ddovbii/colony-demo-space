@@ -79,19 +79,53 @@ async function run() {
         else {
             core.setFailed('Unable to fetch branch due to unsupported event');
         }
-
+        let bps = []
         // Get the changed files from the response payload.
         const files = response.data.files
         for (const file of files) {
-            const filename = file.filename
-
-            core.info(`Found change in file ${filename}`)
-
             if (file.status === "removed") {
                 continue
             }
-        
-            // Alex's code is starting here
+
+            core.info(`Found change in file ${filename}`)
+
+            const filename = file.filename
+
+            if (filename.startsWith('blueprints/')) {
+                var bp_name = filename.replace('blueprints/', '').replace('.yaml', '')
+                // bps.push()
+                const data = {
+                    'blueprint_name': bp_name,
+                    'source': {
+                        'branch': branch
+                        // todo - add commit
+                    }
+                }
+
+                fetch(`https://cloudshellcolony.com/api/spaces/${space}/validations/blueprints`, {
+                    method: 'POST',
+                    cache: 'no-cache', 
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
+                    },
+                    body: JSON.stringify(data)
+                })
+                    .then(response => { return response.json() })
+                    .then(data => {
+                        // Work with JSON data here
+                        logger.debug(`response json data: ${JSON.stringify(data)}`);
+                        if ('errors' in data && data.errors && data.errors.length > 0) {
+                            logger.error(`validation for blueprint "${data.blueprint_name} failed"`)
+                            throw JSON.stringify({'blueprint_name': data.blueprint_name, 'errors': data.errors});
+                        }
+                    })
+                    .catch(error => core.setFailed(error));
+
+                
+            } else{
+                continue
+            }
         }
     } catch (error) {
         core.setFailed(error.message)

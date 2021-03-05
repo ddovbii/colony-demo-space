@@ -13,7 +13,7 @@ artifacts:
   - mongodb: artifacts/test-data/test-data-db.tar
 
 inputs:
-- PORT: 3000
+- PORT: 3002
 - API_PORT: 3001
 - RELEASE_NUMBER: none
 - API_BUILD_NUMBER: none
