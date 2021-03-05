@@ -111,10 +111,7 @@ async function run() {
                 })
                     .then(response => { return response.json() })
                     .then(data => {
-                        // Work with JSON data here
-                        logger.debug(`response json data: ${JSON.stringify(data)}`);
                         if ('errors' in data && data.errors && data.errors.length > 0) {
-                            logger.error(`validation for blueprint "${data.blueprint_name} failed"`)
                             throw JSON.stringify({'blueprint_name': data.blueprint_name, 'errors': data.errors});
                         }
                     })
