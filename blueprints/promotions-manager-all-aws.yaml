@@ -13,7 +13,8 @@ artifacts:
   - mongodb: artifacts/test-data/test-data-db.tar
 
 inputs:
-- PORT: 3000
+        #- PORT: 3000
+- PORT: 0
 - API_PORT: 3001
 - AWS_INSTANCE_TYPE: m5.large
 - RELEASE_NUMBER: none

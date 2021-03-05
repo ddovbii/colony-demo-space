@@ -1,6 +1,6 @@
 kind: application
 inputs:
-- APIPORT: 3001
+- API_PORT: 3001
 - AZURE_VM_SIZE: Basic_A1
 - AWS_INSTANCE_TYPE: m5.large
 - DATABASE_HOST: mongodb
