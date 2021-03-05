@@ -1,19 +1,15 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+import {context, GitHub} from '@actions/github'
 //import {context, GitHub} from '@actions/github'
 
 try {
-    const logger = new Logger(core.getInput('debug'))
+    // const logger = new Logger(core.getInput('debug'))
     const token = core.getInput('token');
     const space = core.getInput('space');
+    const client = new GitHub(token)
     
-
-
     const eventName = context.eventName
-
-    // Define the base and head commits to be extracted from the payload.
-    let base: string | undefined
-    let head: string | undefined
 
     switch (eventName) {
         case 'pull_request':
@@ -63,5 +59,17 @@ try {
             "Please submit an issue on this action's GitHub repo."
         )
     }
+    // Get the changed files from the response payload.
+    const files = response.data.files
+    for (const file of files) {
+        const filename = file.filename
 
+        if (file.status === "removed") {
+            continue
+        }
+       
+        // Alex's code is starting here
+    }
+} catch (error) {
+    core.setFailed(error.message)
 }
