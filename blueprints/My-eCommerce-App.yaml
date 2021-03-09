@@ -1,6 +1,5 @@
 spec_version: 1
 kind: blueprint
-
 metadata:
   description: >
     All in one deployment of our eCommerce app 

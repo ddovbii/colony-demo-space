@@ -53,6 +53,7 @@ cd blueprints || exit 1;
 echo ${GITHUB_EVENT_NAME}
 echo "List of changed files:"
 #echo "CHANGED_FILES=$(git diff --name-only ${GITHUB_EVENT_BEFORE}..${GITHUB_EVENT_AFTER})"
+<<<<<<< HEAD
 env
 >>>>>>> pass changed files
 
@@ -63,6 +64,28 @@ for ((i = 0; i < ${#FILES_TO_VALIDATE[@]}; i++)); do
 	echo "Validating ${bpname}..."
 	colony --token $INPUT_COLONY_TOKEN --space $INPUT_SPACE bp validate "${bpname}" --branch $BRANCH || ((err++))
 done
+=======
+
+err=0
+
+for f in $FILES; do
+  if [[ $f == blueprints/* ]] ;
+  then
+    bpname=`echo $f | sed 's,blueprints/,,' | sed 's/.yaml//'`
+    echo "Validating ${bpname}..."
+    colony --token $COLONY_TOKEN --space $SPACE bp validate "${BP}" --branch $BRANCH || ((err++))
+  else
+    echo "Skipping file ${f}"
+  fi
+  
+# for f in *.yaml; do
+#   BP=${f%.yaml}
+#   echo "Validating ${BP}..."
+#   colony --token $COLONY_TOKEN --space $SPACE bp validate "${BP}" --branch $BRANCH || ((err++))
+#   echo "**********************************************************************"
+# #  printf '%s\n' "${f%.yaml}"
+# done
+>>>>>>> test
 
 echo "Number of failed blueptints: ${err}"
 
