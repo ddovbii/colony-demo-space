@@ -22,6 +22,7 @@ for f in $FILES; do
   else
     echo "Skipping file ${f}"
   fi
+done
   
 # for f in *.yaml; do
 #   BP=${f%.yaml}
