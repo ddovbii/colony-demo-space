@@ -5,18 +5,9 @@ inputs:
   space:
     description: 'Colony space'
     required: true
-  before:
-    description: >
-      commit hash before
-    required: true
-    default: ${{ github.event.before }}
 
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  env:
-#     GITHUB_EVENT_BEFORE: ${{ github.event.before }}
-    GITHUB_EVENT_AFTER: ${{ github.token }}
   args:
     - ${{ inputs.space }}
-    - ${{ inputs.before }}
