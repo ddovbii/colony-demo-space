@@ -13,7 +13,7 @@ artifacts:
   - mongodb: artifacts/test-data/test-data-db.tar
 
 inputs:
-- PORT: 3000
+- PORT: 3002
 - API_PORT: 3001
 - AZURE_VM_SIZE: Basic_A1
 - RELEASE_NUMBER: none
