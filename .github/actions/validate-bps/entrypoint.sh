@@ -1,10 +1,11 @@
 #!/bin/bash
 
 SPACE=$1
-SHA=$2
+FILES=$2
 BRANCH=${GITHUB_REF##*/}
 echo "working in branch ${BRANCH}"
 echo "Space: ${SPACE}"
+echo "Files to validate ${FILES}"
 cd blueprints || exit 1;
 echo ${GITHUB_EVENT_NAME}
 echo "List of changed files:"
