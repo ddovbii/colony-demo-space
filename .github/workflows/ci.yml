@@ -19,5 +19,9 @@ jobs:
       uses: ./.github/actions/validate-bps
       with:
         space: ${{ matrix.space }}
+<<<<<<< HEAD
         fileslist: ${{ steps.files.outputs.all }}
         colony_token: ${{ secrets.COLONY_TOKEN }}
+=======
+        filelist: ${{ steps.files.outputs.all }}
+>>>>>>> pass changed files

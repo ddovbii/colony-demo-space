@@ -1,5 +1,6 @@
 #!/bin/bash
 
+<<<<<<< HEAD
 BRANCH=${GITHUB_REF##*/}
 FILES_TO_VALIDATE=()
 
@@ -41,6 +42,19 @@ if [ -n "$INPUT_FILESLIST" ]; then
 else
 	FILES_TO_VALIDATE=(blueprints/*.yaml)
 fi
+=======
+SPACE=$1
+FILES=$2
+BRANCH=${GITHUB_REF##*/}
+echo "working in branch ${BRANCH}"
+echo "Space: ${SPACE}"
+echo "Files to validate ${FILES}"
+cd blueprints || exit 1;
+echo ${GITHUB_EVENT_NAME}
+echo "List of changed files:"
+#echo "CHANGED_FILES=$(git diff --name-only ${GITHUB_EVENT_BEFORE}..${GITHUB_EVENT_AFTER})"
+env
+>>>>>>> pass changed files
 
 err=0
 

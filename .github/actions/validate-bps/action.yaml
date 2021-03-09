@@ -6,6 +6,7 @@ inputs:
     description: 'Colony space'
     required: true
 
+<<<<<<< HEAD
   fileslist:
     description: 'Whitespace separated list of files to validate'
     required: false
@@ -13,7 +14,18 @@ inputs:
   colony_token:
     description: 'Colony longterm token'
     required: true
+=======
+  filelist:
+    description: 'Whitespace separated list of files to validate'
+    required: true 
+>>>>>>> pass changed files
 
 runs:
   using: 'docker'
   image: 'Dockerfile'
+<<<<<<< HEAD
+=======
+  args:
+    - ${{ inputs.space }}
+    - ${{ inputs.filelist }}
+>>>>>>> pass changed files
