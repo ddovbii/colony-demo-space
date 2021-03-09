@@ -94,6 +94,7 @@ async function run() {
                 // bps.push()
                 const data = {
                     'blueprint_name': bp_name,
+                    'type': 'sandbox',
                     'source': {
                         'branch': branch
                         // todo - add commit
