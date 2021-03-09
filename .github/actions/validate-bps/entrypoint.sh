@@ -50,8 +50,8 @@ echo "working in branch ${BRANCH}"
 echo "Space: ${SPACE}"
 echo "Files to validate ${FILES}"
 cd blueprints || exit 1;
-echo ${GITHUB_EVENT_NAME}
-echo "List of changed files:"
+# echo ${GITHUB_EVENT_NAME}
+# echo "List of changed files:"
 #echo "CHANGED_FILES=$(git diff --name-only ${GITHUB_EVENT_BEFORE}..${GITHUB_EVENT_AFTER})"
 <<<<<<< HEAD
 env
@@ -73,7 +73,7 @@ for f in $FILES; do
   then
     bpname=`echo $f | sed 's,blueprints/,,' | sed 's/.yaml//'`
     echo "Validating ${bpname}..."
-    colony --token $COLONY_TOKEN --space $SPACE bp validate "${BP}" --branch $BRANCH || ((err++))
+    colony --token $COLONY_TOKEN --space $SPACE bp validate "${bpname}" --branch $BRANCH || ((err++))
   else
     echo "Skipping file ${f}"
   fi
