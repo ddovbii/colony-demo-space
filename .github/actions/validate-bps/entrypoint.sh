@@ -94,12 +94,10 @@ if [ -n "$FILES" ]; then
 			substr=$(dirname $path | cut -d/ -f 2)
 			echo "Find bplueprints which depend on ${substr}"
 			#bplist=$(grep -l -r blueprints/ -e $substr)
-      bplist=(`grep -l -r blueprints/ -e $substr`)
-      
-      for ((i = 0; i < ${#bplist[@]}; i++)); do
-        bp=${bplist[$i]}
-			# for bp in $bplist; do
-				if [[ ! " ${FILES_TO_VALIDATE[@]} " =~ " ${bp} " ]]; then
+      grep -l -r blueprints/ -e $substr |
+      while read bp;
+      do
+        if [[ ! " ${FILES_TO_VALIDATE[@]} " =~ " ${bp} " ]]; then
 					echo "Adding ${bp} to the list"
 					FILES_TO_VALIDATE+=("${bp}")
 				fi
