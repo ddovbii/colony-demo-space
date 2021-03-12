@@ -29,10 +29,11 @@ if [ -n "$FILES" ]; then
       bplist=(`grep -l -r blueprints/ -e $substr`)
       
       for ((i = 0; i < ${#bplist[@]}; i++))
+        bp=${bplist[$i]}
 			# for bp in $bplist; do
-				if [[ ! " ${FILES_TO_VALIDATE[@]} " =~ " ${bplist[$i]} " ]]; then
-					echo "Adding ${bplist[$i]} to the list"
-					FILES_TO_VALIDATE+=("${bplist[$i]}")
+				if [[ ! " ${FILES_TO_VALIDATE[@]} " =~ " ${bp} " ]]; then
+					echo "Adding ${bp} to the list"
+					FILES_TO_VALIDATE+=("${bp}")
 				fi
 			done
 		else
