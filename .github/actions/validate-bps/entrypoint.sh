@@ -46,10 +46,12 @@ fi
 SPACE=$1
 FILES=$2
 BRANCH=${GITHUB_REF##*/}
+
 echo "working in branch ${BRANCH}"
 echo "Space: ${SPACE}"
 echo "Files to validate ${FILES}"
 cd blueprints || exit 1;
+<<<<<<< HEAD
 # echo ${GITHUB_EVENT_NAME}
 # echo "List of changed files:"
 #echo "CHANGED_FILES=$(git diff --name-only ${GITHUB_EVENT_BEFORE}..${GITHUB_EVENT_AFTER})"
@@ -65,18 +67,52 @@ for ((i = 0; i < ${#FILES_TO_VALIDATE[@]}; i++)); do
 	colony --token $INPUT_COLONY_TOKEN --space $INPUT_SPACE bp validate "${bpname}" --branch $BRANCH || ((err++))
 done
 =======
+=======
+
+if [ -n "$FILES" ]; then
+	echo "The following list of files passed to the job:"
+	echo $FILES
+
+	for path in $FILES; do
+		# highlevel dir
+		FOLDER=$(dirname $path | cut -d/ -f 1);
+
+		if [ $FOLDER = "blueprints" ]; then
+			# do nothing, just add to validation list 
+			FILES_TO_VALIDATE+=("${path}")
+			
+		elif [ $FOLDER == "applications" ] || [ $FOLDER == "services" ]; then
+		    # find corresponding blueprint
+			substr=$(dirname $path | cut -d/ -f 2)
+			echo "Find bplueprints which depend on ${substr}"
+			bplist=$(grep -l -r blueprints/ -e $substr)
+
+			for bp in $bplist; do
+				if [[ ! " ${FILES_TO_VALIDATE[@]} " =~ " ${bp} " ]]; then
+					echo "Adding ${bp} to the list"
+					FILES_TO_VALIDATE+=("${bp}")
+				fi
+			done
+		else
+			echo "Skipping ${path}"
+		fi
+	done
+else
+  FILES_TO_VALIDATE=(blueprints/*.yaml)
+fi
+>>>>>>> all bps
 
 err=0
 
-for f in $FILES; do
-  if [[ $f == blueprints/* ]] ;
-  then
-    bpname=`echo $f | sed 's,blueprints/,,' | sed 's/.yaml//'`
-    echo "Validating ${bpname}..."
-    colony --token $COLONY_TOKEN --space $SPACE bp validate "${bpname}" --branch $BRANCH || ((err++))
-  else
-    echo "Skipping file ${f}"
-  fi
+for ((i = 0; i < ${#FILES_TO_VALIDATE[@]}; i++)); do
+  #if [[ $f == blueprints/* ]] ;
+  #then
+  bpname=`echo ${FILES_TO_VALIDATE[$i]} | sed 's,blueprints/,,' | sed 's/.yaml//'`
+  echo "Validating ${bpname}..."
+  colony --token $COLONY_TOKEN --space $SPACE bp validate "${bpname}" --branch $BRANCH || ((err++))
+  #else
+  #  echo "Skipping file ${f}"
+  #fi
 done
   
 # for f in *.yaml; do
