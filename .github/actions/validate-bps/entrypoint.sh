@@ -7,7 +7,7 @@ BRANCH=${GITHUB_REF##*/}
 echo "working in branch ${BRANCH}"
 echo "Space: ${SPACE}"
 echo "Files to validate ${FILES}"
-[ -d "./blueprints" ] || echo "No blueprints/ directory" && exit 1;
+[ -d "./blueprints" ] || (echo "No blueprints/ directory" && exit 1);
 
 if [ -n "$FILES" ]; then
 	echo "The following list of files passed to the job:"
@@ -39,20 +39,20 @@ if [ -n "$FILES" ]; then
 		fi
 	done
 else
-  FILES_TO_VALIDATE=(blueprints/*.yaml)
+	FILES_TO_VALIDATE=(blueprints/*.yaml)
 fi
 
 err=0
 
 for ((i = 0; i < ${#FILES_TO_VALIDATE[@]}; i++)); do
-  #if [[ $f == blueprints/* ]] ;
-  #then
-  bpname=`echo ${FILES_TO_VALIDATE[$i]} | sed 's,blueprints/,,' | sed 's/.yaml//'`
-  echo "Validating ${bpname}..."
-  colony --token $COLONY_TOKEN --space $SPACE bp validate "${bpname}" --branch $BRANCH || ((err++))
-  #else
-  #  echo "Skipping file ${f}"
-  #fi
+	#if [[ $f == blueprints/* ]] ;
+	#then
+	bpname=`echo ${FILES_TO_VALIDATE[$i]} | sed 's,blueprints/,,' | sed 's/.yaml//'`
+	echo "Validating ${bpname}..."
+	colony --token $COLONY_TOKEN --space $SPACE bp validate "${bpname}" --branch $BRANCH || ((err++))
+  	#else
+  	#  echo "Skipping file ${f}"
+  	#fi
 done
   
 # for f in *.yaml; do
@@ -66,7 +66,7 @@ done
 echo "Number of failed blueptints: ${err}"
 
 if (( $err > 0 )); then
-  exit 1;
+	  exit 1;
 fi
 
 # colony --help
