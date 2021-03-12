@@ -96,7 +96,7 @@ if [ -n "$FILES" ]; then
 			#bplist=$(grep -l -r blueprints/ -e $substr)
       bplist=(`grep -l -r blueprints/ -e $substr`)
       
-      for ((i = 0; i < ${#bplist[@]}; i++))
+      for ((i = 0; i < ${#bplist[@]}; i++)); do
         bp=${bplist[$i]}
 			# for bp in $bplist; do
 				if [[ ! " ${FILES_TO_VALIDATE[@]} " =~ " ${bp} " ]]; then
