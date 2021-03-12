@@ -7,7 +7,7 @@ BRANCH=${GITHUB_REF##*/}
 echo "working in branch ${BRANCH}"
 echo "Space: ${SPACE}"
 echo "Files to validate ${FILES}"
-cd blueprints || exit 1;
+[ -d "./blueprints" ] || echo "No blueprints/ directory" && exit 1;
 
 if [ -n "$FILES" ]; then
 	echo "The following list of files passed to the job:"
