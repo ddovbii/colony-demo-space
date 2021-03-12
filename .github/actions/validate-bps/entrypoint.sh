@@ -51,6 +51,7 @@ echo "working in branch ${BRANCH}"
 echo "Space: ${SPACE}"
 echo "Files to validate ${FILES}"
 <<<<<<< HEAD
+<<<<<<< HEAD
 cd blueprints || exit 1;
 <<<<<<< HEAD
 # echo ${GITHUB_EVENT_NAME}
@@ -71,6 +72,9 @@ done
 =======
 =======
 [ -d "./blueprints" ] || echo "No blueprints/ directory" && exit 1;
+>>>>>>> Update entrypoint.sh
+=======
+[ -d "./blueprints" ] || (echo "No blueprints/ directory" && exit 1);
 >>>>>>> Update entrypoint.sh
 
 if [ -n "$FILES" ]; then
@@ -103,21 +107,21 @@ if [ -n "$FILES" ]; then
 		fi
 	done
 else
-  FILES_TO_VALIDATE=(blueprints/*.yaml)
+	FILES_TO_VALIDATE=(blueprints/*.yaml)
 fi
 >>>>>>> all bps
 
 err=0
 
 for ((i = 0; i < ${#FILES_TO_VALIDATE[@]}; i++)); do
-  #if [[ $f == blueprints/* ]] ;
-  #then
-  bpname=`echo ${FILES_TO_VALIDATE[$i]} | sed 's,blueprints/,,' | sed 's/.yaml//'`
-  echo "Validating ${bpname}..."
-  colony --token $COLONY_TOKEN --space $SPACE bp validate "${bpname}" --branch $BRANCH || ((err++))
-  #else
-  #  echo "Skipping file ${f}"
-  #fi
+	#if [[ $f == blueprints/* ]] ;
+	#then
+	bpname=`echo ${FILES_TO_VALIDATE[$i]} | sed 's,blueprints/,,' | sed 's/.yaml//'`
+	echo "Validating ${bpname}..."
+	colony --token $COLONY_TOKEN --space $SPACE bp validate "${bpname}" --branch $BRANCH || ((err++))
+  	#else
+  	#  echo "Skipping file ${f}"
+  	#fi
 done
   
 # for f in *.yaml; do
