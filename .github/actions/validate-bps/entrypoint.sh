@@ -50,6 +50,7 @@ BRANCH=${GITHUB_REF##*/}
 echo "working in branch ${BRANCH}"
 echo "Space: ${SPACE}"
 echo "Files to validate ${FILES}"
+<<<<<<< HEAD
 cd blueprints || exit 1;
 <<<<<<< HEAD
 # echo ${GITHUB_EVENT_NAME}
@@ -68,6 +69,9 @@ for ((i = 0; i < ${#FILES_TO_VALIDATE[@]}; i++)); do
 done
 =======
 =======
+=======
+[ -d "./blueprints" ] || echo "No blueprints/ directory" && exit 1;
+>>>>>>> Update entrypoint.sh
 
 if [ -n "$FILES" ]; then
 	echo "The following list of files passed to the job:"
