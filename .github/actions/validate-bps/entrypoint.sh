@@ -16,6 +16,7 @@ if [ -n "$FILES" ]; then
 	for path in $FILES; do
 		# highlevel dir
 		FOLDER=$(dirname $path | cut -d/ -f 1);
+		pwd
 
 		if [ $FOLDER = "blueprints" ]; then
 			# do nothing, just add to validation list 
