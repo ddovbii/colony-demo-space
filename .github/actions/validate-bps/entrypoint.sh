@@ -16,7 +16,6 @@ if [ -n "$FILES" ]; then
 	for path in $FILES; do
 		# highlevel dir
 		FOLDER=$(dirname $path | cut -d/ -f 1);
-		pwd
 
 		if [ $FOLDER = "blueprints" ]; then
 			# do nothing, just add to validation list 
@@ -26,12 +25,14 @@ if [ -n "$FILES" ]; then
 		    # find corresponding blueprint
 			substr=$(dirname $path | cut -d/ -f 2)
 			echo "Find bplueprints which depend on ${substr}"
-			bplist=$(grep -l -r blueprints/ -e $substr)
-
-			for bp in $bplist; do
-				if [[ ! " ${FILES_TO_VALIDATE[@]} " =~ " ${bp} " ]]; then
-					echo "Adding ${bp} to the list"
-					FILES_TO_VALIDATE+=("${bp}")
+			#bplist=$(grep -l -r blueprints/ -e $substr)
+      bplist=(`grep -l -r blueprints/ -e $substr`)
+      
+      for ((i = 0; i < ${#bplist[@]}; i++))
+			# for bp in $bplist; do
+				if [[ ! " ${FILES_TO_VALIDATE[@]} " =~ " ${bp[$i]} " ]]; then
+					echo "Adding ${bp[$i]} to the list"
+					FILES_TO_VALIDATE+=("${bp[$i]}")
 				fi
 			done
 		else
