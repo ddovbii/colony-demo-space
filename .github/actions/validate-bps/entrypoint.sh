@@ -98,9 +98,9 @@ if [ -n "$FILES" ]; then
       
       for ((i = 0; i < ${#bplist[@]}; i++))
 			# for bp in $bplist; do
-				if [[ ! " ${FILES_TO_VALIDATE[@]} " =~ " ${bp[$i]} " ]]; then
-					echo "Adding ${bp[$i]} to the list"
-					FILES_TO_VALIDATE+=("${bp[$i]}")
+				if [[ ! " ${FILES_TO_VALIDATE[@]} " =~ " ${bplist[$i]} " ]]; then
+					echo "Adding ${bplist[$i]} to the list"
+					FILES_TO_VALIDATE+=("${bplist[$i]}")
 				fi
 			done
 		else
