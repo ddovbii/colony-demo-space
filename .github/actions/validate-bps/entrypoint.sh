@@ -22,10 +22,9 @@ if [ -n "$FILES" ]; then
 			FILES_TO_VALIDATE+=("${path}")
 			
 		elif [ $FOLDER == "applications" ] || [ $FOLDER == "services" ]; then
-		    # find corresponding blueprint
+		  # find corresponding blueprint
 			substr=$(dirname $path | cut -d/ -f 2)
 			echo "Find bplueprints which depend on ${substr}"
-			#bplist=$(grep -l -r blueprints/ -e $substr)
       grep -l -r blueprints/ -e $substr |
       while read bp;
       do
@@ -44,9 +43,11 @@ fi
 
 err=0
 
+echo "Starting validation"
 for ((i = 0; i < ${#FILES_TO_VALIDATE[@]}; i++)); do
 	#if [[ $f == blueprints/* ]] ;
 	#then
+  echo "Inside loop"
 	bpname=`echo ${FILES_TO_VALIDATE[$i]} | sed 's,blueprints/,,' | sed 's/.yaml//'`
 	echo "Validating ${bpname}..."
 	colony --token $COLONY_TOKEN --space $SPACE bp validate "${bpname}" --branch $BRANCH || ((err++))
