@@ -4,14 +4,16 @@ SPACE=$1
 FILES=$2
 BRANCH=${GITHUB_REF##*/}
 
-echo "working in branch ${BRANCH}"
+FILES_TO_VALIDATE=()
+
+echo "Working in branch ${BRANCH}"
 echo "Space: ${SPACE}"
-echo "Files to validate ${FILES}"
-[ -d "./blueprints" ] || (echo "No blueprints/ directory" && exit 1);
+
+echo "Files from the user input ${FILES}"
+
+[ -d "./blueprints" ] || (echo "Wrong repo. No blueprints/ directory" && exit 1);
 
 if [ -n "$FILES" ]; then
-	echo "The following list of files passed to the job:"
-	echo $FILES
 
 	for path in $FILES; do
 		# highlevel dir
@@ -23,9 +25,9 @@ if [ -n "$FILES" ]; then
 			
 		elif [ $FOLDER == "applications" ] || [ $FOLDER == "services" ]; then
 		  # find corresponding blueprint
-			substr=$(dirname $path | cut -d/ -f 2)
-			echo "Find bplueprints which depend on ${substr}"
-      grep -l -r blueprints/ -e $substr |
+			resource=$(dirname $path | cut -d/ -f 2)
+			echo "Find bplueprints which depend on ${resource}"
+      grep -l -r blueprints/ -e $resource |
       while read bp;
       do
         if [[ ! " ${FILES_TO_VALIDATE[@]} " =~ " ${bp} " ]]; then
@@ -43,31 +45,14 @@ fi
 
 err=0
 
-echo "Starting validation"
 for ((i = 0; i < ${#FILES_TO_VALIDATE[@]}; i++)); do
-	#if [[ $f == blueprints/* ]] ;
-	#then
-  echo "Inside loop"
 	bpname=`echo ${FILES_TO_VALIDATE[$i]} | sed 's,blueprints/,,' | sed 's/.yaml//'`
 	echo "Validating ${bpname}..."
 	colony --token $COLONY_TOKEN --space $SPACE bp validate "${bpname}" --branch $BRANCH || ((err++))
-  	#else
-  	#  echo "Skipping file ${f}"
-  	#fi
 done
-  
-# for f in *.yaml; do
-#   BP=${f%.yaml}
-#   echo "Validating ${BP}..."
-#   colony --token $COLONY_TOKEN --space $SPACE bp validate "${BP}" --branch $BRANCH || ((err++))
-#   echo "**********************************************************************"
-# #  printf '%s\n' "${f%.yaml}"
-# done
 
 echo "Number of failed blueptints: ${err}"
 
 if (( $err > 0 )); then
 	  exit 1;
 fi
-
-# colony --help
