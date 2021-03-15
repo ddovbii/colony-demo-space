@@ -106,7 +106,7 @@ if [ -n "$INPUT_FILESLIST" ]; then
 		elif [ $FOLDER == "applications" ] || [ $FOLDER == "services" ]; then
 		  # find corresponding blueprint
 			resource=$(dirname $path | cut -d/ -f 2)
-			echo "Find bplueprints which depend on ${resource}"
+			echo "Find blueprints which depend on ${resource}"
       
       while read bp;
       do
