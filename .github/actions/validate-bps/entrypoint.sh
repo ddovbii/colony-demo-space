@@ -1,21 +1,18 @@
 #!/bin/bash
 
-SPACE=$1
-FILES=$2
 BRANCH=${GITHUB_REF##*/}
-
 FILES_TO_VALIDATE=()
 
 echo "Working in branch ${BRANCH}"
-echo "Space: ${SPACE}"
+echo "Space: ${INPUT_SPACE}"
 
-echo "Files from the user input ${FILES}"
+echo "Files from the user input ${INPUT_FILESLIST}"
 
 [ -d "./blueprints" ] || (echo "Wrong repo. No blueprints/ directory" && exit 1);
 
-if [ -n "$FILES" ]; then
+if [ -n "$INPUT_FILESLIST" ]; then
 
-	for path in $FILES; do
+	for path in $INPUT_FILESLIST; do
 		# highlevel dir
 		FOLDER=$(dirname $path | cut -d/ -f 1);
 
@@ -39,7 +36,6 @@ if [ -n "$FILES" ]; then
 			echo "Skipping ${path}"
 		fi
 	done
-  FILES_TO_VALIDATE+=("abc")
   echo "Final list of files to validate"
   echo ${FILES_TO_VALIDATE[@]}
 else
@@ -51,7 +47,7 @@ err=0
 for ((i = 0; i < ${#FILES_TO_VALIDATE[@]}; i++)); do
 	bpname=`echo ${FILES_TO_VALIDATE[$i]} | sed 's,blueprints/,,' | sed 's/.yaml//'`
 	echo "Validating ${bpname}..."
-	colony --token $COLONY_TOKEN --space $SPACE bp validate "${bpname}" --branch $BRANCH || ((err++))
+	colony --token $INPUT_COLONY_TOKEN --space $INPUT_SPACE bp validate "${bpname}" --branch $BRANCH || ((err++))
 done
 
 echo "Number of failed blueptints: ${err}"
