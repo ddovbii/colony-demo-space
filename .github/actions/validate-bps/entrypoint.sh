@@ -112,6 +112,8 @@ if [ -n "$FILES" ]; then
 			echo "Skipping ${path}"
 		fi
 	done
+  echo "Final list of files to validate"
+  echo ${FILES_TO_VALIDATE[@]}
 else
 	FILES_TO_VALIDATE=(blueprints/*.yaml)
 fi
