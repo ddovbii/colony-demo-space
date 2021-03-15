@@ -1,6 +1,7 @@
 #!/bin/bash
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 BRANCH=${GITHUB_REF##*/}
 FILES_TO_VALIDATE=()
 
@@ -46,11 +47,13 @@ fi
 =======
 SPACE=$1
 FILES=$2
+=======
+>>>>>>> move token to inputs
 BRANCH=${GITHUB_REF##*/}
-
 FILES_TO_VALIDATE=()
 
 echo "Working in branch ${BRANCH}"
+<<<<<<< HEAD
 echo "Space: ${SPACE}"
 <<<<<<< HEAD
 echo "Files to validate ${FILES}"
@@ -81,15 +84,18 @@ done
 [ -d "./blueprints" ] || (echo "No blueprints/ directory" && exit 1);
 >>>>>>> Update entrypoint.sh
 =======
+=======
+echo "Space: ${INPUT_SPACE}"
+>>>>>>> move token to inputs
 
-echo "Files from the user input ${FILES}"
+echo "Files from the user input ${INPUT_FILESLIST}"
 
 [ -d "./blueprints" ] || (echo "Wrong repo. No blueprints/ directory" && exit 1);
 >>>>>>> Initiate array
 
-if [ -n "$FILES" ]; then
+if [ -n "$INPUT_FILESLIST" ]; then
 
-	for path in $FILES; do
+	for path in $INPUT_FILESLIST; do
 		# highlevel dir
 		FOLDER=$(dirname $path | cut -d/ -f 1);
 
@@ -125,7 +131,7 @@ err=0
 for ((i = 0; i < ${#FILES_TO_VALIDATE[@]}; i++)); do
 	bpname=`echo ${FILES_TO_VALIDATE[$i]} | sed 's,blueprints/,,' | sed 's/.yaml//'`
 	echo "Validating ${bpname}..."
-	colony --token $COLONY_TOKEN --space $SPACE bp validate "${bpname}" --branch $BRANCH || ((err++))
+	colony --token $INPUT_COLONY_TOKEN --space $INPUT_SPACE bp validate "${bpname}" --branch $BRANCH || ((err++))
 done
 <<<<<<< HEAD
   
