@@ -101,14 +101,14 @@ if [ -n "$FILES" ]; then
 		  # find corresponding blueprint
 			resource=$(dirname $path | cut -d/ -f 2)
 			echo "Find bplueprints which depend on ${resource}"
-      grep -l -r blueprints/ -e $resource |
+      
       while read bp;
       do
         if [[ ! " ${FILES_TO_VALIDATE[@]} " =~ " ${bp} " ]]; then
 					echo "Adding ${bp} to the list"
 					FILES_TO_VALIDATE+=("${bp}")
 				fi
-			done
+			done < <(grep -l -r blueprints/ -e $resource)
 		else
 			echo "Skipping ${path}"
 		fi
