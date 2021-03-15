@@ -37,6 +37,7 @@ if [ -n "$INPUT_FILESLIST" ]; then
 			echo "Skipping ${path}"
 		fi
 	done
+  FILES_TO_VALIDATE+=("abc")
   echo "Final list of files to validate"
   echo ${FILES_TO_VALIDATE[@]}
 else
