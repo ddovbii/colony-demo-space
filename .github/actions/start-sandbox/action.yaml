@@ -1,0 +1,30 @@
+name: 'Start Colony Sandbox'
+description: 'Starts a sandbox in Colony and returns its ID'
+author: 'Quali'
+inputs:
+  space:
+    description: 'Colony space'
+    required: false
+  blueprint_name:
+    description: 'Name of Blueprint'
+    required: false
+  sandbox_name:
+    description: 'Colony Sandbox Name'
+    required: false
+
+outputs:
+  sandbox_id: "The ID of launched Colony Sandbox"
+
+runs:
+  using: "composite"
+  steps:
+    - id: start-sandbox
+      run: ${{ github.action_path }}/start-sb.sh
+      shell: bash
+    - id: wait-sandbox
+      run: ${{ github.action_path }}/wait-sb.sh
+      env:
+        SANDBOX_ID: steps.start-sandbox.outputs.sandbox-id
+
+  using: 'docker'
+  image: 'Dockerfile'
