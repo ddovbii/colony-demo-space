@@ -21,10 +21,12 @@ runs:
   using: "composite"
   steps:
     - id: start-sandbox
-      run: ${{ github.action_path }}/start-sb.sh
+      run: .github/actions/start-sandbox/start-sb.sh
+      # run: ${{ github.action_path }}/start-sb.sh
       shell: bash
     - id: wait-sandbox
-      run: ${{ github.action_path }}/wait-sb.sh
+      run: .github/actions/start-sandbox/wait-sb.sh
+      # run: ${{ github.action_path }}/wait-sb.sh
       env:
-        SANDBOX_ID: steps.start-sandbox.outputs.sandbox-id
+        SANDBOX_ID: ${{ steps.start-sandbox.outputs.sandbox-id }}
       shell: bash
