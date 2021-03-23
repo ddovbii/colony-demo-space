@@ -21,12 +21,19 @@ runs:
   using: "composite"
   steps:
     - id: start-sandbox
-      run: .github/actions/start-sandbox/start-sb.sh
+      # run: .github/actions/start-sandbox/start-sb.sh
       # run: ${{ github.action_path }}/start-sb.sh
+      run: |
+        VAL=`echo $((1 + $RANDOM % 100))`
+        echo "::set-output name=sandbox-id::$(echo $VAL)"
       shell: bash
     - id: wait-sandbox
-      run: .github/actions/start-sandbox/wait-sb.sh
+      # run: .github/actions/start-sandbox/wait-sb.sh
       # run: ${{ github.action_path }}/wait-sb.sh
+      run: |
+        WAIT=`echo $((1 + $RANDOM % 15))`
+        sleep $WAIT
+        echo "Sandbox ID is ${SANDBOX_ID}"
       env:
         SANDBOX_ID: ${{ steps.start-sandbox.outputs.sandbox-id }}
       shell: bash
