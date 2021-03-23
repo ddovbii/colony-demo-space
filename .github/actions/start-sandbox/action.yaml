@@ -13,7 +13,7 @@ inputs:
     required: false
 
 outputs:
-  sandbox_id: "The ID of launched Colony Sandbox"
+  sandbox_id: 'The ID of launched Colony Sandbox'
 
 runs:
   using: "composite"
@@ -25,6 +25,7 @@ runs:
       run: ${{ github.action_path }}/wait-sb.sh
       env:
         SANDBOX_ID: steps.start-sandbox.outputs.sandbox-id
+      shell: bash
 
   using: 'docker'
   image: 'Dockerfile'
