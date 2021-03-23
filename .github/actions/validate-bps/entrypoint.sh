@@ -25,9 +25,9 @@ if [ -n "$INPUT_FILESLIST" ]; then
 			resource=$(dirname $path | cut -d/ -f 2)
 			echo "Find blueprints which depend on ${resource}"
       
-      while read bp;
-      do
-        if [[ ! " ${FILES_TO_VALIDATE[@]} " =~ " ${bp} " ]]; then
+			while read bp;
+			do
+				if [[ ! " ${FILES_TO_VALIDATE[@]} " =~ " ${bp} " ]]; then
 					echo "Adding ${bp} to the list"
 					FILES_TO_VALIDATE+=("${bp}")
 				fi
