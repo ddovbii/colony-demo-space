@@ -13,7 +13,9 @@ inputs:
     required: false
 
 outputs:
-  sandbox_id: 'The ID of launched Colony Sandbox'
+  sandbox_id:
+    description: 'The ID of launched Colony Sandbox'
+    value: ${{ steps.start-sandbox.outputs.sandbox-id }}
 
 runs:
   using: "composite"
@@ -26,6 +28,3 @@ runs:
       env:
         SANDBOX_ID: steps.start-sandbox.outputs.sandbox-id
       shell: bash
-
-  using: 'docker'
-  image: 'Dockerfile'
