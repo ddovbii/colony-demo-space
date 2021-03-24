@@ -55,7 +55,7 @@ runs:
           echo "****"
           sleep 25
           details=`curl --silent \
-            -X GET "https://cloudshell/api/spaces/${{ inputs.space }}/sandbox/${SANDBOX_ID}" \
+            -X GET "https://cloudshellcolony.com/api/spaces/${{ inputs.space }}/sandbox/${SANDBOX_ID}" \
             -H "accept: text/plain" -H "Authorization: bearer ${{ inputs.colony_token }}"`
           status=`echo $details | sed  "s/.*\"sandbox_status\":\"//" | sed "s/\".*//"`
           echo "Status is $status"
