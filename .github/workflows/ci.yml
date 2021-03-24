@@ -5,16 +5,14 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        space: [ PreSaleJenkinsSolution, promotions-manager ]
 
     steps:
     - uses: actions/checkout@v1
-    - name: Get changed files
-      id: files
-      uses: jitterbit/get-changed-files@v1
-    - name: Colony validate blueprints
+
+    - name: Colony start sandbox
       uses: ./.github/actions/start-sandbox
       with:
-        space: ${{ matrix.space }}
+        space: team2
+        blueprint_name: hello-private-ip-aws
+        sandbox_name: test-sb
+        colony_token: ${{ secrets.COLONY_TOKEN }}

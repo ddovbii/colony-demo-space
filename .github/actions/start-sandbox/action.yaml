@@ -11,6 +11,9 @@ inputs:
   sandbox_name:
     description: 'Colony Sandbox Name'
     required: false
+  colony_token:
+    description: 'Colony longterm token'
+    required: true
 
 outputs:
   sandbox_id:
@@ -24,8 +27,22 @@ runs:
       # run: .github/actions/start-sandbox/start-sb.sh
       # run: ${{ github.action_path }}/start-sb.sh
       run: |
-        VAL=`echo $((1 + $RANDOM % 100))`
-        echo "::set-output name=sandbox-id::$(echo $VAL)"
+        PAYLOAD=(
+          "{
+            'sandbox_name':'${{ inputs.sandbox_name }}',
+            'blueprint_name':'${{ inputs.blueprint_name }}',
+            'automation': true
+          }"
+        )
+
+        sb=`curl --silent -X POST https://cloudshellcolony.com/api/spaces/${{ inputs.space }}" \
+               -H "accept: text/plain" -H "Authorization: bearer ${{ inputs.colony_token }}" \
+               -H "Content-Type:  application/json" -d "$PAYLOAD"` || exit 1
+        
+        sb=`echo $sb | sed 's/.*:"//' | sed 's/".*//'`
+        echo "Sandbox with id $sb has been started"
+        
+        echo "::set-output name=sandbox-id::$(echo $sb)"
       shell: bash
     - id: wait-sandbox
       # run: .github/actions/start-sandbox/wait-sb.sh
