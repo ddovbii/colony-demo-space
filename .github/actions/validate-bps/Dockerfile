@@ -1,4 +1,4 @@
-FROM python:3.8.8-buster
+FROM ddovbii/colony-cli
 
 LABEL name="Validate Colony Blueprints"
 LABEL version="0.0.1"
@@ -12,7 +12,7 @@ LABEL com.github.actions.icon="octagon"
 LABEL com.github.actions.color="gray-dark"
 
 #COPY entrypoint.sh cs18_client.py requirements.txt /
-RUN pip install colony-cli
+# RUN pip install colony-cli
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT [ "/entrypoint.sh" ]
 
