@@ -15,7 +15,8 @@ inputs:
 runs:
   using: "composite"
   steps:
-    run: |
-      curl --silent -X DELETE "https://cloudshellcolony.com/api/spaces/${{ inputs.space }}/sandbox/${{ inputs.space }}" \
-           -H "accept: text/plain" -H "Authorization: bearer ${{ inputs.colony_token }}" || exit 1
-    shell: bash
+    - id: end-sandbox
+      run: |
+        curl --silent -X DELETE "https://cloudshellcolony.com/api/spaces/${{ inputs.space }}/sandbox/${{ inputs.space }}" \
+        -H "accept: text/plain" -H "Authorization: bearer ${{ inputs.colony_token }}" || exit 1
+      shell: bash
