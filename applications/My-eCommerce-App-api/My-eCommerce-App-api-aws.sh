@@ -33,3 +33,4 @@ pm2 start /var/promotions-manager-api/index.js
 pm2 save
 chattr +i /root/.pm2/dump.pm2
 sudo su -c "env PATH=$PATH:/home/unitech/.nvm/versions/node/v4.3/bin pm2 startup systemd -u root --hp /root"
+
