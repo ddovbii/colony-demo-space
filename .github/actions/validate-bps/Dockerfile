@@ -5,7 +5,7 @@ LABEL version="0.0.1"
 LABEL repository="https://github.com/ddovbii/colony-demo-space"
 LABEL homepage="https://github.com/ddovbii/colony-demo-space"
 
-LABEL maintainer="Dmytro Docvii <dmytro.d@quali.com>"
+LABEL maintainer="Dmytro Dovbii <dmytro.d@quali.com>"
 LABEL com.github.actions.name="Validate Blueprints"
 LABEL com.github.actions.description="Validates all blueprints in repo against desired space"
 LABEL com.github.actions.icon="octagon"
