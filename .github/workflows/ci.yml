@@ -16,24 +16,24 @@ jobs:
         blueprint_name: hello-private-ip-aws
         colony_token: ${{ secrets.COLONY_TOKEN }}
       
-    - name: Colony start sandbox
-      id: start
-      uses: ./.github/actions/start-sandbox
-      with:
-        space: team2
-        blueprint_name: hello-private-ip-aws
-        sandbox_name: test-sb
-        colony_token: ${{ secrets.COLONY_TOKEN }}
+    # - name: Colony start sandbox
+    #   id: start
+    #   uses: ./.github/actions/start-sandbox
+    #   with:
+    #     space: team2
+    #     blueprint_name: hello-private-ip-aws
+    #     sandbox_name: test-sb
+    #     colony_token: ${{ secrets.COLONY_TOKEN }}
 
-    - name: Test
-      run: |
-        echo "Running some tests against sb with id: ${{ steps.start.outputs.sandbox_id }}"
-        sleep 30
+    # - name: Test
+    #   run: |
+    #     echo "Running some tests against sb with id: ${{ steps.start.outputs.sandbox_id }}"
+    #     sleep 30
 
-    - name: End Sb
-      id: end
-      uses: ./.github/actions/end-sandbox
-      with:
-        space: team2
-        sandbox_id: ${{ steps.start.outputs.sandbox_id }}"
-        colony_token: ${{ secrets.COLONY_TOKEN }}
+    # - name: End Sb
+    #   id: end
+    #   uses: ./.github/actions/end-sandbox
+    #   with:
+    #     space: team2
+    #     sandbox_id: ${{ steps.start.outputs.sandbox_id }}"
+    #     colony_token: ${{ secrets.COLONY_TOKEN }}
