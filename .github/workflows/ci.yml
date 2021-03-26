@@ -9,6 +9,12 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
+    - name: Test Python
+      id: test-python
+      uses: ./.github/actions/test-python
+      with:
+        space: team2
+      
     - name: Colony start sandbox
       id: start
       uses: ./.github/actions/start-sandbox
