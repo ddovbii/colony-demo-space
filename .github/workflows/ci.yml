@@ -9,11 +9,12 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-    - name: Test Python
-      id: test-python
-      uses: .github/actions/test-python
+    - name: Colony Start
+      uses: ./.github/actions/start-sandbox-cli
       with:
         space: team2
+        blueprint_name: hello-private-ip-aws
+        colony_token: ${{ secrets.COLONY_TOKEN }}
       
     - name: Colony start sandbox
       id: start

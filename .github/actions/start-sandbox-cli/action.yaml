@@ -1,0 +1,37 @@
+name: 'Start Colony Sandbox'
+description: 'Starts a sandbox in Colony and returns its ID'
+author: 'Quali'
+inputs:
+  space:
+    description: 'Colony space'
+    required: true
+  blueprint_name:
+    description: 'Name of Blueprint'
+    required: true
+  sandbox_name:
+    description: 'Colony Sandbox Name'
+    required: false
+  colony_token:
+    description: 'Colony longterm token'
+    required: true
+  duration:
+    required: false
+    default: '120'
+  timeout:
+    required: false
+    default: '0'
+  artifacts:
+    required: false
+  inputs:
+    required: false
+  debug:
+    required: false
+    default: 'false'
+
+outputs:
+  sandbox-id:
+    description: 'The ID of launched Colony Sandbox'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
