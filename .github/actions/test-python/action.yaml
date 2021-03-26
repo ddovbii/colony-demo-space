@@ -45,6 +45,7 @@ runs:
         print(f"::set-output name=sandbox-id::{sandbox_id}")
       shell: python
     - id: wait-sandbox
+      shell: python
       run: |
         print("Got id: ${{ steps.start-sandbox.outputs.sandbox-id }}")
 
