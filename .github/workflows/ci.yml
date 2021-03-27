@@ -10,6 +10,7 @@ jobs:
     - uses: actions/checkout@v1
 
     - name: Colony Start
+      id: start
       uses: ./.github/actions/start-sandbox-cli
       with:
         space: team2
@@ -17,6 +18,12 @@ jobs:
         colony_token: ${{ secrets.COLONY_TOKEN }}
         debug: 'true'
       
+    - name: Test output
+      id: test
+      run: |
+        echo "Running some tests against sb with id: ${{ steps.start.outputs.sandbox-id }}"
+        sleep 30 
+  
     # - name: Colony start sandbox
     #   id: start
     #   uses: ./.github/actions/start-sandbox
