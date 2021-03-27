@@ -7,7 +7,7 @@ if [ ${INPUT_DEBUG^^} = 'TRUE' ]; then
 	COLONY_OPTS+=" --debug"
 fi
 
-COLONY_START_OPTS="${INPUT_BLUEPRINT_NAME} --branch ${INPUT_BRANCH} --duration ${DURATION}"
+COLONY_START_OPTS="${INPUT_BLUEPRINT_NAME} --branch ${INPUT_BRANCH} --duration ${INPUT_DURATION}"
 
 [ -n "${INPUT_SANDBOX_NAME}" ] && COLONY_START_OPTS+=" --name ${SANDBOX_NAME}"
 [ -n "${INPUT_ARTIFACTS}" ] && COLONY_START_OPTS+=" --artifacts ${INPUT_ARTIFACTS}"
