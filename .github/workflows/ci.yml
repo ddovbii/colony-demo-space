@@ -15,6 +15,7 @@ jobs:
         space: team2
         blueprint_name: hello-private-ip-aws
         colony_token: ${{ secrets.COLONY_TOKEN }}
+        debug: 'true'
       
     # - name: Colony start sandbox
     #   id: start

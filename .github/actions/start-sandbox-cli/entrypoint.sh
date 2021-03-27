@@ -1,7 +1,5 @@
 #!/bin/bash
 
-BRANCH=${GITHUB_REF##*/}
-
 # Compose options or command
 COLONY_OPTS="--token ${INPUT_COLONY_TOKEN} --space ${INPUT_SPACE}"
 
