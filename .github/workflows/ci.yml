@@ -16,14 +16,21 @@ jobs:
         space: team2
         blueprint_name: hello-private-ip-aws
         colony_token: ${{ secrets.COLONY_TOKEN }}
-        debug: 'true'
+        timeout: 10
       
     - name: Test output
       id: test
       run: |
         echo "Running some tests against sb with id: ${{ steps.start.outputs.sandbox-id }}"
         sleep 30 
-  
+    - name: Colony Stop
+      id: stop
+      uses: ./.github/actions/stop-sandbox-cli
+      with:
+        space: team2
+        sandbox_id: ${{ steps.start.outputs.sandbox-id }}"
+        colony_token: ${{ secrets.COLONY_TOKEN }}
+
     # - name: Colony start sandbox
     #   id: start
     #   uses: ./.github/actions/start-sandbox
