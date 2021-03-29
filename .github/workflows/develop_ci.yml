@@ -1,8 +1,8 @@
 name: CI
-
-push:
-  branches:
-    - switch-to-own-image
+on:
+  push:
+    branches:
+      - switch-to-own-image
 
 jobs:
   build:
