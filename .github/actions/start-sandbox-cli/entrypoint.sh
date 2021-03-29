@@ -10,8 +10,8 @@ fi
 COLONY_START_OPTS="${INPUT_BLUEPRINT_NAME} --branch ${INPUT_BRANCH} --duration ${INPUT_DURATION}"
 
 [ -n "${INPUT_SANDBOX_NAME}" ] && COLONY_START_OPTS+=" --name ${SANDBOX_NAME}"
-[ -n "${INPUT_ARTIFACTS}" ] && COLONY_START_OPTS+=" --artifacts \"${INPUT_ARTIFACTS}\""
-[ -n "${INPUT_INPUTS}" ] && COLONY_START_OPTS+=" --inputs \"${INPUT_INPUTS}\""
+[ -n "${INPUT_ARTIFACTS}" ] && COLONY_START_OPTS+=" --artifacts=\"${INPUT_ARTIFACTS}\""
+[ -n "${INPUT_INPUTS}" ] && COLONY_START_OPTS+=" --inputs=\"${INPUT_INPUTS}\""
 
 if [ ${INPUT_TIMEOUT} != '0' ]; then
 	COLONY_START_OPTS+=" --wait ${INPUT_TIMEOUT}"
