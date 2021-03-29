@@ -1,14 +1,12 @@
 name: CI
 
-on: [push]
+push:
+  branches:
+    - switch-to-own-image
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        space: [ PreSaleJenkinsSolution, promotions-manager ]
 
     steps:
     - uses: actions/checkout@v1
@@ -18,9 +16,13 @@ jobs:
     - name: Colony validate blueprints
       uses: ./.github/actions/validate-bps
       with:
+<<<<<<< HEAD:.github/workflows/ci.yml
         space: ${{ matrix.space }}
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+        space: promotions-manager
+>>>>>>> two ci:.github/workflows/develop_ci.yml
         fileslist: ${{ steps.files.outputs.all }}
         colony_token: ${{ secrets.COLONY_TOKEN }}
 =======
