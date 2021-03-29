@@ -31,5 +31,5 @@ jobs:
       uses: ./.github/actions/stop-sandbox-cli
       with:
         space: PreSaleJenkinsSolution
-        sandbox_id: ${{ steps.start.outputs.sandbox-id }}"
+        sandbox_id: ${{ steps.start.outputs.sandbox-id }}
         colony_token: ${{ secrets.COLONY_TOKEN }}
