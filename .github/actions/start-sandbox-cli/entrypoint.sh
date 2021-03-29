@@ -17,6 +17,8 @@ if [ ${INPUT_TIMEOUT} != '0' ]; then
 	COLONY_START_OPTS+=" --wait ${INPUT_TIMEOUT}"
 fi
 
+echo "Starting sandbox with the following params: ${COLONY_START_OPTS}"
+
 colony $COLONY_OPTS sb start $COLONY_START_OPTS | tee log.txt
 
 if [ ${PIPESTATUS[0]} = '1' ]; then echo "An error occurred during sandbox launching" && exit 1; fi
