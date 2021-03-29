@@ -25,4 +25,6 @@ colony $COLONY_OPTS sb start $COLONY_START_OPTS --inputs "${INPUT_INPUTS}" --art
 if [ ${PIPESTATUS[0]} = '1' ]; then echo "An error occurred during sandbox launching" && exit 1; fi
 
 SANDBOX_ID=$(cat log.txt | grep "Id:" | sed 's/Id: //')
+
 echo "::set-output name=sandbox-id::$(echo $SANDBOX_ID)"
+echo "Sandbox ID ${SANDBOX_ID} is set as output"
