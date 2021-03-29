@@ -17,6 +17,7 @@ jobs:
         blueprint_name: hello-private-ip-aws
         colony_token: ${{ secrets.COLONY_TOKEN }}
         timeout: 10
+        debug: 'true'
       
     - name: Test output
       id: test
