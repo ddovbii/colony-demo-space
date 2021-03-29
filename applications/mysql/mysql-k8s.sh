@@ -10,7 +10,6 @@ echo "Updating System"
 echo "****************************************************************"
 apt-get update -y
 
-
 echo "****************************************************************"
 echo "Preparing MYSQL for silent installation"
 echo "****************************************************************"
@@ -64,7 +63,3 @@ GRANT ALL ON *.* TO ${DB_USER}@'%' IDENTIFIED BY '${DB_PASS}';
 EOF
 
 mysql --defaults-extra-file=/home/pk/my.cnf -e "FLUSH PRIVILEGES;"
-
-
-
-

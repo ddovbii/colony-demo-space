@@ -13,7 +13,6 @@ export DEBIAN_FRONTEND="noninteractive"
 echo "mysql-server mysql-server/root_password password $DB_PASS" | debconf-set-selections
 echo "mysql-server mysql-server/root_password_again password $DB_PASS" | debconf-set-selections
 
-
 # Installing MYSQL
 apt-get install mysql-server -y
 #apt-get install mysql-client -y
@@ -47,7 +46,4 @@ GRANT ALL ON *.* TO ${DB_USER}@'%' IDENTIFIED BY '${DB_PASS}';
 EOF
 
 mysql --defaults-extra-file=/home/pk/my.cnf -e "FLUSH PRIVILEGES;"
-
-
-
 

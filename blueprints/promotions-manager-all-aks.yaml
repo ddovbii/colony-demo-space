@@ -1,5 +1,6 @@
 spec_version: 1
 kind: blueprint
+
 metadata:
   description: >
     Deployment of our promotions manager app in Kuberentes
