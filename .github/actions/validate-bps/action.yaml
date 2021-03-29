@@ -6,8 +6,14 @@ inputs:
     description: 'Colony space'
     required: true
 
+  fileslist:
+    description: 'Whitespace separated list of files to validate'
+    required: false
+    
+  colony_token:
+    description: 'Colony longterm token'
+    required: true
+
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - ${{ inputs.space }}

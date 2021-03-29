@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # run original start command in background
 echo 'Run original start command in background'
 cd /usr/local/bin/
