@@ -18,7 +18,7 @@ jobs:
         colony_token: ${{ secrets.COLONY_TOKEN }}
         timeout: 10
         debug: 'true'
-        inputs: 'CS_COLONY_TOKEN=ABC, SPACE_NAME=trial, IAM_ROLE=s3access-profile, BUCKET_NAME=tyest1, JENKINS_ADMIN_PASS=admin'
+        inputs: 'CS_COLONY_TOKEN=ABC, SPACE_NAME=trial, IAM_ROLE=s3access-profile, BUCKET_NAME=tyest1, JENKINS_ADMIN_PASS=admin, AWS_INSTANCE_TYPE=m5.large'
         branch: dev
       
     - name: Test output
