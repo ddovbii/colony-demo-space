@@ -17,7 +17,7 @@ if [ ${INPUT_TIMEOUT} != '0' ]; then
 	COLONY_START_OPTS+=" --wait ${INPUT_TIMEOUT}"
 fi
 
-colony $COLONY_OPTS sb start $COLONY_START_OPTS | tee log.txt
+colony $COLONY_OPTS sb start $COLONY_START_OPTS | tee log.txt || (echo "Unable to start sandbox" && exit 1)
 
 SANDBOX_ID=$(cat log.txt | grep "Id:" | sed 's/Id: //')
 echo "::set-output name=sandbox-id::$(echo $SANDBOX_ID)"
