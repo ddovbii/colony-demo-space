@@ -1,0 +1,20 @@
+name: 'Start Colony Sandbox'
+description: 'Starts a sandbox in Colony and returns its ID'
+author: 'Quali'
+inputs:
+  space:
+    description: 'Colony space'
+    required: true
+  sandbox_id:
+    description: 'Colony Sandbox Name'
+    required: false
+  colony_token:
+    description: 'Colony longterm token'
+    required: true
+  debug:
+    required: false
+    default: 'false'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
