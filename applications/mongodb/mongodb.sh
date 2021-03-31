@@ -45,3 +45,4 @@ for f in ./*.json; do
 	collection="${temp_var:2}"
 	mongoimport --db promo-manager --collection $collection --file $ARTIFACTS_PATH/drop/$f
 done
+
