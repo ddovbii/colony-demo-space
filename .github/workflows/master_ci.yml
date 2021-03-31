@@ -18,7 +18,7 @@ jobs:
       id: files
       uses: jitterbit/get-changed-files@v1
     - name: Colony validate blueprints
-      uses: ddovbii/colony-validate-bps@0.0.3
+      uses: QualiSystemsLab/colony-validate-bp-action@v0.0.1
       with:
         space: promotions-manager
         fileslist: ${{ steps.files.outputs.all }}
