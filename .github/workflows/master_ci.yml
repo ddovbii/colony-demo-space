@@ -20,6 +20,11 @@ jobs:
     - name: Colony validate blueprints
       uses: QualiSystemsLab/colony-validate-bp-action@v0.0.1
       with:
+<<<<<<< HEAD
         space: promotions-manager
         fileslist: ${{ steps.files.outputs.all }}
+=======
+        space: PreSaleJenkinsSolution
+        fileslist: ${{ steps.files.outputs.added_modified  }}
+>>>>>>> Update master_ci.yml
         colony_token: ${{ secrets.COLONY_TOKEN }}
