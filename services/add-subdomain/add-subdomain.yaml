@@ -27,3 +27,4 @@ permissions:  #optional
   aws:
     role_arn: $ROLE_ARN     #role assumed by service
     external_id: 'colony'
+    
