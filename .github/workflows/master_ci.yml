@@ -29,6 +29,7 @@ jobs:
         space: PreSaleJenkinsSolution
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         fileslist: ${{ steps.files.outputs.added_modified  }}
 >>>>>>> Update master_ci.yml
 =======
@@ -36,5 +37,8 @@ jobs:
 >>>>>>> Update master_ci.yml
 =======
         fileslist: ${{ steps.files.outputs.added_modified  }}
+>>>>>>> Update master_ci.yml
+=======
+        files_list: ${{ steps.files.outputs.added_modified  }}
 >>>>>>> Update master_ci.yml
         colony_token: ${{ secrets.COLONY_TOKEN }}
