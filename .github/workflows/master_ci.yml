@@ -17,6 +17,8 @@ jobs:
     - name: Get changed files
       id: files
       uses: jitterbit/get-changed-files@v1
+      with:
+        format: 'csv'
     - name: Colony validate blueprints
       uses: QualiSystemsLab/colony-validate-bp-action@v0.0.1
       with:
