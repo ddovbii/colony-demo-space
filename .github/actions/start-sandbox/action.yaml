@@ -30,22 +30,22 @@ runs:
         echo "Current DIR"
         ls -la
         
-        PAYLOAD=(
-          "{
-            'sandbox_name':'${{ inputs.sandbox_name }}',
-            'blueprint_name':'${{ inputs.blueprint_name }}',
-            'automation': true
-          }"
-        )
+       #PAYLOAD=(
+       #   "{
+        #    'sandbox_name':'${{ inputs.sandbox_name }}',
+         #   'blueprint_name':'${{ inputs.blueprint_name }}',
+          #  'automation': true
+         # }"
+        #)
 
-        sb=`curl --silent -X POST "https://cloudshellcolony.com/api/spaces/${{ inputs.space }}/sandbox" \
-               -H "accept: text/plain" -H "Authorization: bearer ${{ inputs.colony_token }}" \
-               -H "Content-Type:  application/json" -d "$PAYLOAD"` || exit 1
+        #sb=`curl --silent -X POST "https://cloudshellcolony.com/api/spaces/${{ inputs.space }}/sandbox" \
+        #       -H "accept: text/plain" -H "Authorization: bearer ${{ inputs.colony_token }}" \
+        #       -H "Content-Type:  application/json" -d "$PAYLOAD"` || exit 1
         
-        sb=`echo $sb | sed 's/.*:"//' | sed 's/".*//'`
+        #sb=`echo $sb | sed 's/.*:"//' | sed 's/".*//'`
         echo "Sandbox with id $sb has been started"
         
-        echo "::set-output name=sandbox-id::$(echo $sb)"
+        #echo "::set-output name=sandbox-id::$(echo $sb)"
       shell: bash
     - id: wait-sandbox
       # run: .github/actions/start-sandbox/wait-sb.sh
