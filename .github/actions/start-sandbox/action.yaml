@@ -32,26 +32,3 @@ runs:
         echo "Sandbox with id $sb has been started"
 
       shell: bash
-    - id: wait-sandbox
-      # run: .github/actions/start-sandbox/wait-sb.sh
-      # run: ${{ github.action_path }}/wait-sb.sh
-      run: |
-        echo "Waiting for sandbox ${{ inputs.sandbox_name }}"
-        timeout=`date --date="15 minutes" +%s`
-        status=''
-        while [[ $(date +%s) -le $timeout && $status != "Active" ]]; do
-          echo "****"
-          sleep 25
-          details=`curl --silent \
-            -X GET "https://cloudshellcolony.com/api/spaces/${{ inputs.space }}/sandbox/${SANDBOX_ID}" \
-            -H "accept: text/plain" -H "Authorization: bearer ${{ inputs.colony_token }}"`
-          status=`echo $details | sed  "s/.*\"sandbox_status\":\"//" | sed "s/\".*//"`
-          echo "Status is $status"
-        done
-        if [[ $status != "Active" ]]; then
-          echo "Timeout was reached or Sandbox is active with errors"
-          exit 1
-        fi
-      env:
-        SANDBOX_ID: ${{ steps.start-sandbox.outputs.sandbox-id }}
-      shell: bash
