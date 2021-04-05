@@ -27,6 +27,9 @@ runs:
       # run: .github/actions/start-sandbox/start-sb.sh
       # run: ${{ github.action_path }}/start-sb.sh
       run: |
+        echo "Current DIR"
+        ls -la
+        
         PAYLOAD=(
           "{
             'sandbox_name':'${{ inputs.sandbox_name }}',
