@@ -11,7 +11,7 @@ jobs:
 
     - name: Colony Start
       id: start
-      uses: ./.github/actions/start-sandbox-cli
+      uses: ./.github/actions/start-sandbox
       with:
         space: PreSaleJenkinsSolution
         blueprint_name: Jenkins
