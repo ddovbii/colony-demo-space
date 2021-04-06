@@ -21,4 +21,3 @@ jobs:
         space: team2
         blueprint_name: hello-private-ip-aws
         colony_token: ${{ secrets.COLONY_TOKEN }}
-        timeout: 10
