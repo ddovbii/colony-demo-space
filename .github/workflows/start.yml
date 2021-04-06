@@ -1,0 +1,24 @@
+name: CI
+on:
+  push:
+    branches:
+      - master
+    pull_request:
+      branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Colony start
+      uses: QualiSystemsLab/colony-start-sb-action@dev
+      with:
+        space: team2
+        blueprint_name: hello-private-ip-aws
+        colony_token: ${{ secrets.COLONY_TOKEN }}
+        timeout: 10
