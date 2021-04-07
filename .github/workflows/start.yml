@@ -25,6 +25,7 @@ jobs:
         colony_token: ${{ secrets.COLONY_TOKEN }}
         timeout: 15
         branch: dev
+        colony_account: colony-demo
         
     - name: Testing
       run: sleep 30
