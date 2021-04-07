@@ -32,6 +32,6 @@ jobs:
       with:
         space: team2
         colony_token: ${{ secrets.COLONY_TOKEN }}
-        sandbox_id: ${{ steps.start-sb.outputs.sandbox-id }}
+        sandbox_id: ${{ steps.start-sb.outputs.sandbox_id }}
 
       
