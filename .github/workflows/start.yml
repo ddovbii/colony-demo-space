@@ -35,6 +35,3 @@ jobs:
         space: PreSaleJenkinsSolution
         colony_token: ${{ secrets.COLONY_TOKEN }}
         sandbox_id: ${{ steps.start-sb.outputs.sandbox_id }}
-        inputs: 
-
-      
