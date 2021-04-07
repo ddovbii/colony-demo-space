@@ -16,9 +16,22 @@ jobs:
     - uses: actions/checkout@v1
 
     - name: Colony start
+      id: start-sb
       uses: QualiSystemsLab/colony-start-sb-action@dev
       with:
         space: team2
         blueprint_name: hello-private-ip-aws
         colony_token: ${{ secrets.COLONY_TOKEN }}
         timeout: 15
+        
+    - name: Testing
+      run: sleep 30
+      
+    - name: Stop Sandbox
+      uses: QualiSystemsLab/colony-end-sb-action@dev
+      with:
+        space: team2
+        colony_token: ${{ secrets.COLONY_TOKEN }}
+        sandbox_id: ${{ steps.start-sb.outputs.sandbox-id }}
+
+      
