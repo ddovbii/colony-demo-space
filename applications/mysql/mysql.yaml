@@ -50,7 +50,7 @@ configuration:
   # app prerequisite and initialize the OS
   # This script installs mysql on a clean Ubuntu OS,
   # sets up a root account and creates an empty database
-  # for the application
+  # for the application.
   initialization:
     script: mysql.sh
   # This script restarts the mysql.service process after
