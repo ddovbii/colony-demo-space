@@ -15,7 +15,7 @@ jobs:
 
     - name: Colony start
       id: start-sb
-      uses: ddovbii/colony-start-sb-action@dev
+      uses: QualiSystemsLab/colony-start-sb-action@dev
       with:
         space: PreSaleJenkinsSolution
         blueprint_name: Jenkins
