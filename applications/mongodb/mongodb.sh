@@ -39,6 +39,7 @@ echo 'Waiting for db to be ready'
 sleep 30
 
 echo 'Import all collections from artifact'
+
 cd $ARTIFACTS_PATH/drop
 for f in ./*.json; do
 	temp_var="${f%.*}"
