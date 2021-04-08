@@ -1,4 +1,4 @@
-name: CI
+name: Test Colony Sandbox
 on:
   push:
     branches:
