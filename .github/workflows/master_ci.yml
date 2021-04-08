@@ -23,6 +23,7 @@ jobs:
       uses: QualiSystemsLab/colony-validate-bp-action@v0.0.1
       with:
 <<<<<<< HEAD
+<<<<<<< HEAD
         space: promotions-manager
         fileslist: ${{ steps.files.outputs.all }}
 =======
@@ -39,6 +40,9 @@ jobs:
         fileslist: ${{ steps.files.outputs.added_modified  }}
 >>>>>>> Update master_ci.yml
 =======
+=======
+        space: promotions-manager
+>>>>>>> Update master_ci.yml
         files_list: ${{ steps.files.outputs.added_modified  }}
 >>>>>>> Update master_ci.yml
         colony_token: ${{ secrets.COLONY_TOKEN }}
