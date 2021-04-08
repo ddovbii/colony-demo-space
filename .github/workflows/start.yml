@@ -17,7 +17,7 @@ jobs:
 
     - name: Colony start
       id: start-sb
-      uses: QualiSystemsLab/colony-start-sb-action@dev
+      uses: ddovbii/colony-start-sb-action@dev
       with:
         space: PreSaleJenkinsSolution
         blueprint_name: Jenkins
@@ -30,9 +30,9 @@ jobs:
     - name: Testing
       run: sleep 30
       
-    - name: Stop Sandbox
-      uses: QualiSystemsLab/colony-end-sb-action@dev
-      with:
-        space: PreSaleJenkinsSolution
-        colony_token: ${{ secrets.COLONY_TOKEN }}
-        sandbox_id: ${{ steps.start-sb.outputs.sandbox_id }}
+#     - name: Stop Sandbox
+#       uses: QualiSystemsLab/colony-end-sb-action@dev
+#       with:
+#         space: PreSaleJenkinsSolution
+#         colony_token: ${{ secrets.COLONY_TOKEN }}
+#         sandbox_id: ${{ steps.start-sb.outputs.sandbox_id }}
