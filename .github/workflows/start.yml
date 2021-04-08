@@ -21,7 +21,7 @@ jobs:
         blueprint_name: Jenkins
         inputs: 'CS_COLONY_TOKEN=ABC,SPACE_NAME=trial,IAM_ROLE=s3access-profile,BUCKET_NAME=tyest1,AWS_INSTANCE_TYPE=m5.large,JENKINS_ADMIN_PASS=admin'
         colony_token: ${{ secrets.COLONY_TOKEN }}
-        timeout: 12
+        timeout: 15
         branch: dev
         colony_account: colony-demo
         
