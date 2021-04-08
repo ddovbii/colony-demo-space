@@ -18,7 +18,7 @@ configuration:
   start:
     script: mongodb-command.sh
   initialization:
-    script: mongodb.sh  # will install mongodb 3.4
+    script: mongodb.sh  # will install mongodb 3.4.
   healthcheck:
     timeout: 1000
     wait_for_ports: 27017
