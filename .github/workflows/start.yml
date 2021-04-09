@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-    - name: Colony start Sandbox
+    - name: Colony Start Sandbox
       id: start-sb
       uses: QualiSystemsLab/colony-start-sb-action@dev
       with:
