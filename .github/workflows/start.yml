@@ -15,7 +15,7 @@ jobs:
 
     - name: Colony Start Sandbox
       id: start-sb
-      uses: QualiSystemsLab/colony-start-sb-action@v0.0.1
+      uses: QualiSystemsLab/colony-start-sb-action@dev
       with:
         space: PreSaleJenkinsSolution
         blueprint_name: Jenkins
