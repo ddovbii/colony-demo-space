@@ -28,9 +28,9 @@ jobs:
     - name: Testing
       run: |
         echo "Running tests against sandbox with id: ${{ steps.start-sb.outputs.sandbox_id }}"
-        echo "${{ steps.start-sb.outputs.sandbox_shortcuts }}"
-        echo "${{ steps.start-sb.outputs.sandbox_details }}"
-        echo "${{ steps.start-sb.outputs.sandbox_id }}"
+        #echo "${{ steps.start-sb.outputs.sandbox_shortcuts }}"
+        #echo "${{ steps.start-sb.outputs.sandbox_details }}"
+        #echo "${{ steps.start-sb.outputs.sandbox_id }}"
 
         readarray -t shortcuts <<< "$(jq '. | .[]' <<< '${{ steps.start-sb.outputs.sandbox_shortcuts }}')"
         for shortcut in ${shortcuts[@]}; do
