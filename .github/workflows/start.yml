@@ -15,7 +15,7 @@ jobs:
 
     - name: Colony Start Sandbox
       id: start-sb
-      uses: QualiSystemsLab/colony-start-sb-action@dev
+      uses: QualiSystemsLab/colony-start-sb-action@v0.0.1
       with:
         space: PreSaleJenkinsSolution
         blueprint_name: Jenkins
@@ -26,10 +26,19 @@ jobs:
         colony_account: colony-demo
         
     - name: Testing
-      run: sleep 30
+      run: |
+        sleep 10
+        echo "Running tests against sandbox with id: ${{ steps.start-sandbox.outputs.sandbox_id }}
+        shortcuts=${{ steps.start-sandbox.sandbox_shortcuts }}
+        echo $shortcuts
+        readarray -t shortcuts <<< "$(jq '. | .[]' <<< '${{ steps.start-sandbox.sandbox_shortcuts }}')"
+        for shortcut in ${shortcuts[@]}; do
+            "Do something with this ${shortcut}."
+        done
+        
       
     - name: Stop Sandbox
-      uses: QualiSystemsLab/colony-end-sb-action@dev
+      uses: QualiSystemsLab/colony-end-sb-action@v0.0.1
       with:
         space: PreSaleJenkinsSolution
         colony_token: ${{ secrets.COLONY_TOKEN }}
