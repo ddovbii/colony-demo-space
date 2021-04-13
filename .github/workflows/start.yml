@@ -34,7 +34,7 @@ jobs:
 
         readarray -t shortcuts <<< "$(jq '. | .[]' <<< '${{ steps.start-sb.outputs.sandbox_shortcuts }}')"
         for shortcut in ${shortcuts[@]}; do
-            "Do something with this ${shortcut}."
+            echo "Do something with this ${shortcut}."
         done        
       
     - name: Stop Sandbox
