@@ -5,7 +5,7 @@ metadata:
     Deployment of our promotions manager app in Kuberentes
     
 clouds: 
-  - AWS 2/eks-colony-demo-uswest2
+  - AWS/eks
   
 artifacts:
   - promotions-manager-ui: artifacts/latest/promotions-manager-ui.master.tar.gz
