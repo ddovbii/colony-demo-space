@@ -23,5 +23,5 @@ jobs:
       uses: QualiSystemsLab/colony-validate-bp-action@v0.0.1
       with:
         space: promotions-manager
-        fileslist: ${{ steps.files.outputs.added_modified  }}
+        files_list: ${{ steps.files.outputs.added_modified  }}
         colony_token: ${{ secrets.COLONY_TOKEN }}
