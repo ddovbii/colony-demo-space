@@ -17,5 +17,5 @@ jobs:
       uses: ./.github/actions/validate-bps
       with:
         space: promotions-manager
-        fileslist: ${{ steps.files.outputs.all }}
+        files_list: ${{ steps.files.outputs.all }}
         colony_token: ${{ secrets.COLONY_TOKEN }}
