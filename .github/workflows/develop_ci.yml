@@ -16,19 +16,6 @@ jobs:
     - name: Colony validate blueprints
       uses: ./.github/actions/validate-bps
       with:
-<<<<<<< HEAD:.github/workflows/ci.yml
-        space: ${{ matrix.space }}
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
         space: promotions-manager
->>>>>>> two ci:.github/workflows/develop_ci.yml
         fileslist: ${{ steps.files.outputs.all }}
         colony_token: ${{ secrets.COLONY_TOKEN }}
-=======
-        filelist: ${{ steps.files.outputs.all }}
->>>>>>> pass changed files
-=======
-        fileslist: ${{ steps.files.outputs.all }}
-        colony_token: ${{ secrets.COLONY_TOKEN }}
->>>>>>> move token to inputs
