@@ -21,7 +21,6 @@ inputs:
 
 applications:
   - promotions-manager-ui:
-      instances: 2
       input_values:
         - PORT: $PORT
         - API_PORT: $API_PORT
