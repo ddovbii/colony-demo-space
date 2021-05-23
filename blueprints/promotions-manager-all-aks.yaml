@@ -6,7 +6,7 @@ metadata:
     Deployment of our promotions manager app in Kuberentes
     
 clouds: 
-  - Azure-Yaniv/aks
+  - Azure-Yaniv/aks1
   
 artifacts:
   - promotions-manager-ui: artifacts/latest/promotions-manager-ui.master.tar.gz
